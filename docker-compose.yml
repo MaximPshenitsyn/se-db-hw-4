@@ -10,7 +10,8 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata-db1"
     volumes:
       - ./docker/db/scripts/create_library.sql:/docker-entrypoint-initdb.d/create_library.sql
-      - ./dz:/var/lib/postgresql/data
+      # - ./docker/db/config//var/lib/postgresql/data/pgdata-db1/postgresql.conf
+      - ./docker/db/data/lib/:/var/lib/postgresql/data/
     ports:
       - "5432:5432"
   db2:
@@ -25,7 +26,7 @@ services:
       - ./docker/db/scripts/create_station.sql:/docker-entrypoint-initdb.d/create_station.sql
       - ./dz:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
   db3:
     container_name: db3
     image: postgres:14.5
@@ -38,4 +39,4 @@ services:
       - ./docker/db/scripts/create_station_hospital.sql:/docker-entrypoint-initdb.d/create_station_hospital.sql
       - ./dz:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5435:5432"
